@@ -37,7 +37,7 @@ namespace CosumeLivraria.Controllers
 
                 }
 
-                return Redirect("Products/Index");
+                return Redirect("Autor/Index");
             }
         }
 
@@ -61,6 +61,3 @@ namespace CosumeLivraria.Controllers
         }
     }
 }
-
-
-

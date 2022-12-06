@@ -41,7 +41,7 @@ namespace CosumeLivraria.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Livros livros)
         {
-            Livros addProduct = new Livros();
+            Livros addLivros = new Livros();
 
             var accessToken = HttpContext.Session.GetString("JWToken");
 
@@ -54,16 +54,16 @@ namespace CosumeLivraria.Controllers
                 using (var response = await httpClient.PostAsync("https://localhost:5001/api/Livros", content))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
-                    addProduct = JsonConvert.DeserializeObject<Livros>(apiResponse);
+                    addLivros = JsonConvert.DeserializeObject<Livros>(apiResponse);
                 }
             }
-            return View(addProduct);
+            return View(addLivros);
         }
         public async Task<IActionResult> Edit(int id)
         {
             var accessToken = HttpContext.Session.GetString("JWToken");
 
-            Livros product = new Livros();
+            Livros livros = new Livros();
 
             using (var httpClient = new HttpClient())
             {
@@ -73,17 +73,17 @@ namespace CosumeLivraria.Controllers
                 using (var response = await httpClient.GetAsync("https://localhost:5001/api/Livros/" + id))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
-                    product = JsonConvert.DeserializeObject<Livros>(apiResponse);
+                    livros = JsonConvert.DeserializeObject<Livros>(apiResponse);
                 }
             }
-            return View(product);
+            return View(livros);
         }
         [HttpPost]
         public async Task<IActionResult> Edit(Livros livros)
         {
             var accessToken = HttpContext.Session.GetString("JWToken");
 
-            Livros receivedProduct = new Livros();
+            Livros receivedLivros = new Livros();
 
             using (var httpClient = new HttpClient())
             {
@@ -99,10 +99,10 @@ namespace CosumeLivraria.Controllers
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
                     ViewBag.Result = "Success";
-                    receivedProduct = JsonConvert.DeserializeObject<Livros>(apiResponse);
+                    receivedLivros = JsonConvert.DeserializeObject<Livros>(apiResponse);
                 }
             }
-            return View(receivedProduct);
+            return View(receivedLivros);
         }
 
         [HttpPost]

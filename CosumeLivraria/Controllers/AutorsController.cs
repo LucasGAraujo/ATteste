@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using CosumeLivraria.Data;
+﻿using Microsoft.AspNetCore.Mvc;
 using CosumeLivraria.Models;
 using Newtonsoft.Json;
 using System.Net.Http.Headers;
@@ -42,7 +35,7 @@ namespace CosumeLivraria.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Autor autor)
         {
-            Autor addProduct = new Autor();
+            Autor addAutor = new Autor();
 
             var accessToken = HttpContext.Session.GetString("JWToken");
 
@@ -55,16 +48,16 @@ namespace CosumeLivraria.Controllers
                 using (var response = await httpClient.PostAsync("https://localhost:5001/api/Autors", content))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
-                    addProduct = JsonConvert.DeserializeObject<Autor>(apiResponse);
+                    addAutor = JsonConvert.DeserializeObject<Autor>(apiResponse);
                 }
             }
-            return View(addProduct);
+            return View(addAutor);
         }
         public async Task<IActionResult> Edit (int id)
         {
             var accessToken = HttpContext.Session.GetString("JWToken");
 
-            Autor product = new Autor();
+            Autor autors = new Autor();
 
             using (var httpClient = new HttpClient())
             {
@@ -74,17 +67,17 @@ namespace CosumeLivraria.Controllers
                 using (var response = await httpClient.GetAsync("https://localhost:5001/api/Autors/" + id))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
-                    product = JsonConvert.DeserializeObject<Autor>(apiResponse);
+                    autors = JsonConvert.DeserializeObject<Autor>(apiResponse);
                 }
             }
-            return View(product);
+            return View(autors);
         }
         [HttpPost]
         public async Task<IActionResult> Edit(Autor autor)
         {
             var accessToken = HttpContext.Session.GetString("JWToken");
 
-            Autor receivedProduct = new Autor();
+            Autor receivedAutor = new Autor();
 
             using (var httpClient = new HttpClient())
             {
@@ -96,14 +89,14 @@ namespace CosumeLivraria.Controllers
 
                 Console.WriteLine(content.ToString());
 
-                using (var response = await httpClient.PutAsync("https://localhost:5001/api/autors/" + autor.Id, content))
+                using (var response = await httpClient.PutAsync("https://localhost:5001/api/Autors/" + autor.Id, content))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
                     ViewBag.Result = "Success";
-                    receivedProduct = JsonConvert.DeserializeObject<Autor>(apiResponse);
+                    receivedAutor = JsonConvert.DeserializeObject<Autor>(apiResponse);
                 }
             }
-            return View(receivedProduct);
+            return View(receivedAutor);
         }
 
         [HttpPost]
