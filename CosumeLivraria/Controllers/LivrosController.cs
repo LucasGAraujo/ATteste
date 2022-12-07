@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using CosumeLivraria.Data;
 using CosumeLivraria.Models;
 using Newtonsoft.Json;
 using System.Net.Http.Headers;
@@ -35,6 +34,26 @@ namespace CosumeLivraria.Controllers
                 }
             }
             return View(LivrosList);
+        }
+        [HttpGet]
+        public async Task<IActionResult> Get(int id)
+        {
+            Livros livros = new Livros();
+
+            var accessToken = HttpContext.Session.GetString("JWToken");
+
+            using (var httpClient = new HttpClient())
+            {
+
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+
+                using (var response = await httpClient.GetAsync("http://localhost:5000/api/Livros/" + id))
+                {
+                    string apiResponse = await response.Content.ReadAsStringAsync();
+                    livros = JsonConvert.DeserializeObject<Livros>(apiResponse);
+                }
+            }
+            return View(livros);
         }
         public ViewResult Create() => View();
 

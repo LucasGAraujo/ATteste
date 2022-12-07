@@ -8,14 +8,14 @@ using System.Text;
 using LivratiaAt.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
+
+
+
 builder.Services.AddDbContext<LivratiaAtContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("LivratiaAtContext") ?? throw new InvalidOperationException("Connection string 'LivratiaAtContext' not found.")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("LivratiaAtContext")));
+
 
 // Add services to the container.
-
-builder.Services.AddDbContext<LivratiaAtContext>(options =>
-options.UseSqlServer(builder.Configuration.GetConnectionString("DatabaseConnection")));
-
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<LivratiaAtContext>();
 
