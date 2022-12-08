@@ -32,7 +32,7 @@ namespace ConsumeApi.Controllers
 
                 }
 
-                return Redirect("../Auth/Index");
+                return Redirect("../Home/Index");
             }
         }
 
