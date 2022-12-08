@@ -1,4 +1,5 @@
-﻿using ConsumeApi.Models;
+﻿
+using ConsumeApi.Models;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;

@@ -14,5 +14,6 @@ namespace ConsumeApi.Models
         public string Email { get; set; }
         [DataType(DataType.Date)]
         public DateTime DataNascimento { get; set; }
+        public ICollection<Livros> Livros { get; set; }
     }
 }

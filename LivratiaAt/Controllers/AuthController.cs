@@ -1,6 +1,6 @@
 ﻿
+using ConsumeApi.Models;
 using LivratiaAt.Configuration;
-using LivratiaAt.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;

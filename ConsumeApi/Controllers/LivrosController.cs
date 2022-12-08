@@ -6,10 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
-using ConsumeApi.Models;
+
 using Newtonsoft.Json;
 using System.Net.Http.Headers;
 using System.Text;
+using ConsumeApi.Models;
 
 namespace ConsumeApi.Controllers
 {

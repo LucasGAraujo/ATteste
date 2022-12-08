@@ -6,8 +6,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using LivratiaAt.Data;
-using LivratiaAt.Models;
+
 using Microsoft.AspNetCore.Authorization;
+using ConsumeApi.Models;
 
 namespace LivratiaAt.Controllers
 {
