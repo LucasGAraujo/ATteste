@@ -17,9 +17,9 @@ namespace LivratiaAt.Controllers
     [ApiController]
     public class AutorsController : ControllerBase
     {
-        private readonly LivratiaAtContext _context;
+        private readonly LivratiaAtDbContext _context;
 
-        public AutorsController(LivratiaAtContext context)
+        public AutorsController(LivratiaAtDbContext context)
         {
             _context = context;
         }

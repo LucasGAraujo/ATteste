@@ -1,13 +1,14 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity;
+﻿
 using ConsumeApi.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace LivratiaAt.Data
 {
-    public class LivratiaAtContext : IdentityDbContext<IdentityUser>
+    public class LivratiaAtDbContext : IdentityDbContext<IdentityUser>
     {
-        public LivratiaAtContext(DbContextOptions options)
+        public LivratiaAtDbContext(DbContextOptions options)
             : base(options)
         {
         }

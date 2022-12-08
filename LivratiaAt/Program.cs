@@ -11,13 +11,13 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 
-builder.Services.AddDbContext<LivratiaAtContext>(options =>
+builder.Services.AddDbContext<LivratiaAtDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("LivratiaAtContext")));
 
 
 // Add services to the container.
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<LivratiaAtContext>();
+                .AddEntityFrameworkStores<LivratiaAtDbContext>();
 
 builder.Services.AddControllers();
 
