@@ -125,7 +125,7 @@ namespace ConsumeApi.Controllers
             {
                 httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
 
-                using (var response = await httpClient.DeleteAsync("https://localhost:5001/api/Livros/" + LivrosId))
+                using (var response = await httpClient.DeleteAsync("https://localhost:5000/api/Livros/" + LivrosId))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
                 }

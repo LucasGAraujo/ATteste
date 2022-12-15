@@ -54,10 +54,7 @@
                     @Html.ActionLink("Edit", "Update", new {id=item.Id}) |
                 </td>
                 <td>
-                    <form asp-action="Delete" method="post">
-                        <input type="hidden" value="@item.Id" name="Id" />
-                        <input type="image" height="16" width="16" src="/icon/close.ico" />
-                    </form>
+                    @Html.ActionLink("Delete", "Delete", new {id=item.Id})
                 </td>
             </tr>
         }
