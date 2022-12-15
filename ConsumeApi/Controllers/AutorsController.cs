@@ -97,7 +97,7 @@ namespace ConsumeApi.Controllers
 
                 StringContent content = new StringContent(JsonConvert.SerializeObject(autor), Encoding.UTF8, "application/json");
 
-                using (var response = await httpClient.PutAsync("http://localhost:5000/api/Products/" + autor.Id, content))
+                using (var response = await httpClient.PutAsync("http://localhost:5000/api/Autors/" + autor.Id, content))
                 {
 
                     string apiResponse = await response.Content.ReadAsStringAsync();
@@ -117,7 +117,7 @@ namespace ConsumeApi.Controllers
             {
                 httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
 
-                using (var response = await httpClient.DeleteAsync("https://localhost:5001/api/Products/" + AutorId))
+                using (var response = await httpClient.DeleteAsync("https://localhost:5001/api/Autors/" + AutorId))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
                 }

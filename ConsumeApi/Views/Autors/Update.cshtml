@@ -1,50 +1,34 @@
 ﻿@model ConsumeApi.Models.Autor
-
 @{
-    ViewData["Title"] = "Update";
+    Layout = "_Layout"; ViewBag.Title = "Update a Autor";
 }
 
-<h1>Update</h1>
-
-<h4>Autor</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Update">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Id" class="control-label"></label>
-                <input asp-for="Id" class="form-control" />
-                <span asp-validation-for="Id" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="NomeAutor" class="control-label"></label>
-                <input asp-for="NomeAutor" class="form-control" />
-                <span asp-validation-for="NomeAutor" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SobrenomeAutor" class="control-label"></label>
-                <input asp-for="SobrenomeAutor" class="form-control" />
-                <span asp-validation-for="SobrenomeAutor" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DataNascimento" class="control-label"></label>
-                <input asp-for="DataNascimento" class="form-control" />
-                <span asp-validation-for="DataNascimento" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+<h2>Update a Autor <a asp-action="Update" class="btn btn-sm btn-secondary">Back</a></h2>
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Id"></label>
+        <input class="form-control" asp-for="Id" readonly />
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+    <div class="form-group">
+        <label asp-for="NomeAutor"></label>
+        <input class="form-control" asp-for="NomeAutor" />
+    </div>
+    <div class="form-group">
+        <label asp-for="SobrenomeAutor"></label>
+        <input class="form-control" asp-for="SobrenomeAutor" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Email"></label>
+        <input class="form-control" asp-for="Email" />
+    </div>
+    <div class="form-group">
+        <label asp-for="DataNascimento"></label>
+        <input class="form-control" asp-for="DataNascimento" />
+    </div>
+    <div class="text-center panel-body">
+        <button type="submit" class="btn btn-sm btn-primary">Update</button>
+    </div>
+</form>
+@if (ViewBag.Result == "Success") { <h1>Foi Parabens, pela sua atualização</h1>
+}
 
